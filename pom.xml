@@ -19,7 +19,7 @@
 		<!--set this to your docker acct name-->
 		<docker.image.prefix>ingjulianvega</docker.image.prefix>
 		<!--Set to name of project-->
-		<docker.image.name>mssc-asu-marital-status</docker.image.name>
+		<docker.image.name>mssc-asu-gender</docker.image.name>
 
 	</properties>
 
