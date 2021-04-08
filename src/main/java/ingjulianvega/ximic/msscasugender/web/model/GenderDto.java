@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class GenderDto implements Serializable {
 
     static final long serialVersionUID = -1008692555246336322L;
 
-    private Integer id;
+    private UUID id;
     private String name;
 
 }
