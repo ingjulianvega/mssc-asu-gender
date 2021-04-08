@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @RestController
@@ -23,24 +25,24 @@ public class GenderController implements GenderI{
     }
 
     @Override
-    public ResponseEntity<GenderDto> getById(UUID id) {
+    public ResponseEntity<GenderDto> getById(@NotNull UUID id) {
         return new ResponseEntity<>(genderService.getById(id), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Void> create(Gender gender) {
+    public ResponseEntity<Void> create(@NotNull @Valid Gender gender) {
         genderService.create(gender);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Override
-    public ResponseEntity<Void> updateById(UUID id, Gender gender) {
+    public ResponseEntity<Void> updateById(@NotNull UUID id, @NotNull @Valid Gender gender) {
         genderService.updateById(id, gender);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @Override
-    public ResponseEntity<Void> deleteById(UUID id) {
+    public ResponseEntity<Void> deleteById(@NotNull UUID id) {
         genderService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

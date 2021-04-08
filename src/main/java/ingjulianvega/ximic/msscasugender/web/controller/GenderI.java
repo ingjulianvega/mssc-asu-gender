@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public interface GenderI {
@@ -44,7 +45,7 @@ public interface GenderI {
     @RequestMapping(value = "/{id}",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<GenderDto> getById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id);
+    ResponseEntity<GenderDto> getById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @NotNull @PathVariable("id") UUID id);
 
     @Operation(summary = "Endpoint to create a gender", description = "Creates a new gender", tags = {"gender"})
     @ApiResponses(value = {
@@ -57,7 +58,7 @@ public interface GenderI {
             produces = {"application/json"},
             consumes = {"application/json"},
             method = RequestMethod.POST)
-    ResponseEntity<Void> create(@Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender gender);
+    ResponseEntity<Void> create(@Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @NotNull @Valid @RequestBody Gender gender);
 
     @Operation(summary = "Endpoint to update the information of a gender given the id", description = "Updates a gender", tags = {"gender"})
     @ApiResponses(value = {
@@ -70,7 +71,8 @@ public interface GenderI {
             produces = {"application/json"},
             consumes = {"application/json"},
             method = RequestMethod.PUT)
-    ResponseEntity<Void> updateById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id, @Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender body);
+    ResponseEntity<Void> updateById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @NotNull @PathVariable("id") UUID id,
+                                    @Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @NotNull @Valid @RequestBody Gender body);
 
 
     @Operation(summary = "Endpoint to delete a gender", description = "Deletes a gender", tags = {"gender"})
@@ -83,6 +85,6 @@ public interface GenderI {
     @RequestMapping(value = "/{id}",
             produces = {"application/json"},
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id);
+    ResponseEntity<Void> deleteById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @NotNull @PathVariable("id") UUID id);
 
 }
