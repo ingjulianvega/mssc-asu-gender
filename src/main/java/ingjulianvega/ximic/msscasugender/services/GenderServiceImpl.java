@@ -24,7 +24,7 @@ public class GenderServiceImpl implements GenderService {
     private final GenderRepository genderRepository;
     private final GenderMapper genderMapper;
 
-    @Cacheable(cacheNames = "maritalStatusListCache")
+    @Cacheable(cacheNames = "genderListCache")
     @Override
     public GenderList get() {
         log.debug("get()...");
@@ -34,7 +34,7 @@ public class GenderServiceImpl implements GenderService {
                 .build();
     }
 
-    @Cacheable(cacheNames = "maritalStatusCache")
+    @Cacheable(cacheNames = "genderCache")
     @Override
     public GenderDto getById(UUID id) {
         log.debug("getById()...");
