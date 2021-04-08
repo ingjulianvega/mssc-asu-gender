@@ -3,7 +3,7 @@ package ingjulianvega.ximic.msscasugender.configuration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
 
-@EnableCaching
+//@EnableCaching
 @Configuration
 public class CacheConfig {
 }

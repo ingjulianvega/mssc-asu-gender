@@ -1,6 +1,7 @@
 package ingjulianvega.ximic.msscasugender.web.controller;
 
 import ingjulianvega.ximic.msscasugender.web.model.ApiError;
+import ingjulianvega.ximic.msscasugender.web.model.Gender;
 import ingjulianvega.ximic.msscasugender.web.model.GenderDto;
 import ingjulianvega.ximic.msscasugender.web.model.GenderList;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
-public interface Gender {
+public interface GenderI {
 
     @Operation(summary = "Endpoint to get the list of genders", description = "Returns a list of gender", tags = {"gender"})
     @ApiResponses(value = {
@@ -42,7 +44,7 @@ public interface Gender {
     @RequestMapping(value = "/{id}",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<GenderDto> getById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") Integer id);
+    ResponseEntity<GenderDto> getById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id);
 
     @Operation(summary = "Endpoint to create a gender", description = "Creates a new gender", tags = {"gender"})
     @ApiResponses(value = {
@@ -55,7 +57,7 @@ public interface Gender {
             produces = {"application/json"},
             consumes = {"application/json"},
             method = RequestMethod.POST)
-    ResponseEntity<Void> create(@Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender body);
+    ResponseEntity<Void> create(@Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender gender);
 
     @Operation(summary = "Endpoint to update the information of a gender given the id", description = "Updates a gender", tags = {"gender"})
     @ApiResponses(value = {
@@ -68,7 +70,7 @@ public interface Gender {
             produces = {"application/json"},
             consumes = {"application/json"},
             method = RequestMethod.PUT)
-    ResponseEntity<Void> updateById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") Integer id, @Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender body);
+    ResponseEntity<Void> updateById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id, @Parameter(in = ParameterIn.DEFAULT, description = "Gender's attributes", required = true, schema = @Schema()) @Valid @RequestBody Gender body);
 
 
     @Operation(summary = "Endpoint to delete a gender", description = "Deletes a gender", tags = {"gender"})
@@ -81,6 +83,6 @@ public interface Gender {
     @RequestMapping(value = "/{id}",
             produces = {"application/json"},
             method = RequestMethod.DELETE)
-    ResponseEntity<Void> deleteById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") Integer id);
+    ResponseEntity<Void> deleteById(@Parameter(in = ParameterIn.PATH, description = "The gender id", required = true, schema = @Schema()) @PathVariable("id") UUID id);
 
 }

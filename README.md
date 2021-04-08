@@ -10,7 +10,7 @@ https://github.com/ingjulianvega/mssc-asu-bom
 
 ### OpenAPI
 
-http://localhost:8080/asu/v1/gender/swagger-ui.html
+http://localhost:8081/asu/v1/gender/swagger-ui.html
 
 ### H2
 
