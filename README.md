@@ -14,7 +14,7 @@ http://localhost:8081/asu/v1/gender/swagger-ui.html
 
 ### H2
 
-http://localhost:8080/asu/v1/gender/h2-console
+http://localhost:8081/asu/v1/gender/h2-console
 
 ```
 jdbc:h2:mem:testdb

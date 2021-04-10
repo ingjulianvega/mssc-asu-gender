@@ -13,7 +13,7 @@
 	<artifactId>mssc-asu-gender</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mssc-asu-gender</name>
-	<description>ASU gender management microservicec</description>
+	<description>ASU gender management microservice</description>
 
 	<properties>
 		<!--set this to your docker acct name-->
