@@ -30,7 +30,7 @@ public class GenderServiceImpl implements GenderService {
         log.debug("get()...");
         return GenderList
                 .builder()
-                .genderList(genderMapper.genderEntityListToGenderDtoList(genderRepository.findAll()))
+                .genderList(genderMapper.genderEntityListToGenderDtoList(genderRepository.findAllByOrderByName()))
                 .build();
     }
 
