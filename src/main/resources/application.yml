@@ -8,7 +8,7 @@ contact-url: https://twitter.com/ingjulianvega
 
 spring:
   application:
-    name: mssc-asu-gender
+    name: @artifactId@
   profiles:
     active: local-discovery
   h2:
