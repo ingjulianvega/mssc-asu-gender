@@ -33,7 +33,7 @@ public interface GenderI {
     @RequestMapping(value = "/",
             produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<GenderList> get();
+    ResponseEntity<GenderList> get(@Parameter(in = ParameterIn.QUERY, description = "The using of cache", required = true, schema = @Schema()) Boolean usingCache);
 
     @Operation(summary = "Endpoint to get the information of a gender given the id", description = "Returns a gender", tags = {"gender"})
     @ApiResponses(value = {

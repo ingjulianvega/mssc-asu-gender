@@ -24,9 +24,9 @@ public class GenderServiceImpl implements GenderService {
     private final GenderRepository genderRepository;
     private final GenderMapper genderMapper;
 
-    @Cacheable(cacheNames = "genderListCache")
+    @Cacheable(cacheNames = "genderListCache", condition = "#usingCache == false")
     @Override
-    public GenderList get() {
+    public GenderList get(Boolean usingCache) {
         log.debug("get()...");
         return GenderList
                 .builder()

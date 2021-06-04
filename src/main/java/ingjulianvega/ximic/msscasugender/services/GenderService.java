@@ -7,7 +7,7 @@ import ingjulianvega.ximic.msscasugender.web.model.GenderList;
 import java.util.UUID;
 
 public interface GenderService {
-    GenderList get();
+    GenderList get(Boolean usingCache);
 
     GenderDto getById(UUID id);
 

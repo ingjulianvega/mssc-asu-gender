@@ -20,8 +20,8 @@ public class GenderController implements GenderI{
     private final GenderService genderService;
 
     @Override
-    public ResponseEntity<GenderList> get() {
-        return new ResponseEntity<>(genderService.get(), HttpStatus.OK);
+    public ResponseEntity<GenderList> get(Boolean usingCache) {
+        return new ResponseEntity<>(genderService.get(usingCache), HttpStatus.OK);
     }
 
     @Override
