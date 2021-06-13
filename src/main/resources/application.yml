@@ -23,8 +23,8 @@ spring:
     jcache:
       config: classpath:ehcache.xml
   #Zipkin
-#  zipkin:
-#    enabled: false
+  zipkin:
+    baseUrl: http://localhost:9411/
 #General configuration
 server:
   port: 8081
@@ -40,4 +40,8 @@ gender:
   prefix: 'API-GN:'
   error:
     general: There was an unexpected error. Please try again.
-
+#Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://netflix:eureka@localhost:8761/eureka
