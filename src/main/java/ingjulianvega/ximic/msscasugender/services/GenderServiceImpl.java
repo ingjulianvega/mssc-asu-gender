@@ -12,6 +12,7 @@ import ingjulianvega.ximic.msscasugender.web.model.GenderList;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -39,7 +40,14 @@ public class GenderServiceImpl implements GenderService {
     public GenderDto getById(UUID id) {
         log.debug("getById()...");
         return genderMapper.genderEntityToGenderDto(
-                genderRepository.findById(id).orElseThrow(() -> new GenderException(ErrorCodeMessages.MARITAL_STATUS_NOT_FOUND, "")));
+                genderRepository.findById(id).orElseThrow(() -> GenderException
+                        .builder()
+                        .httpStatus(HttpStatus.BAD_REQUEST)
+                        .apiCode(ErrorCodeMessages.GENDER_NOT_FOUND_API_CODE)
+                        .error(ErrorCodeMessages.GENDER_NOT_FOUND_ERROR)
+                        .message(ErrorCodeMessages.GENDER_NOT_FOUND_MESSAGE)
+                        .solution(ErrorCodeMessages.GENDER_NOT_FOUND_SOLUTION)
+                        .build()));
     }
 
     @Override
@@ -57,7 +65,14 @@ public class GenderServiceImpl implements GenderService {
     @Override
     public void updateById(UUID id, Gender gender) {
         log.debug("updateById...");
-        GenderEntity genderEntity = genderRepository.findById(id).orElseThrow(() -> new GenderException(ErrorCodeMessages.MARITAL_STATUS_NOT_FOUND, ""));
+        GenderEntity genderEntity = genderRepository.findById(id).orElseThrow(() -> GenderException
+                .builder()
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .apiCode(ErrorCodeMessages.GENDER_NOT_FOUND_API_CODE)
+                .error(ErrorCodeMessages.GENDER_NOT_FOUND_ERROR)
+                .message(ErrorCodeMessages.GENDER_NOT_FOUND_MESSAGE)
+                .solution(ErrorCodeMessages.GENDER_NOT_FOUND_SOLUTION)
+                .build());
         genderEntity.setName(gender.getName());
 
         genderRepository.save(genderEntity);
